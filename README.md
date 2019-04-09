@@ -22,3 +22,17 @@ https://blog.csdn.net/gooogleman/article/details/7219157
 
 ## ARM内核全解析，从ARM7,ARM9到Cortex-A7,A8,A9,A12,A15到Cortex-A53,A57 - 米尔科技  
 http://www.myir-tech.com/resource/448.asp  
+
+## 重要基本问题  
+* 登录和网线/无线远程登录  
+* 向开发板拉取文件或推送文件（从ubuntu/windows到目标开发板）  
+* 交叉编译  
+* 移植wiringpi（类Arduino框架）  
+* 编写驱动程序  
+
+## 次要基本问题  
+* 刷bootloader  
+* 刷固件/刷操作系统  
+* 制作和刷文件系统  
+* 移植framebuffer，移植SDL  
+
