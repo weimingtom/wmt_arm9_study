@@ -13,6 +13,7 @@ nuvoton NUC977DK62Y 970 ARM9 Linux开发板
 
 ## 华为海思 / hisiv200    
 海思HI3518EV200  
+hi3515  
 
 ## 推荐几个值得中小企业使用的ARM9/ARM11/Cortex A8处理器  
 https://blog.csdn.net/gooogleman/article/details/7219157  
