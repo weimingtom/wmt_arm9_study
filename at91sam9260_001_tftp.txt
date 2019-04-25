@@ -1,0 +1,217 @@
+(0) at91sam9260 putty
+波特率（位/秒）：115200
+数据位：8
+奇偶校验：无
+停止位：1
+数据流控制：无
+
+(1) 单片机IP: 192.168.17.194
+[root@BeyondBoard_AT91SAM9260BY /root]#ifconfig
+eth0      Link encap:Ethernet  HWaddr 30:31:32:33:34:35
+          inet addr:192.168.17.194  Bcast:192.168.17.255  Mask:255.255.255.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:21 Base address:0x4000
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+(2) Windows 固定IP
+windows: 固定IP
+	ip: 192.168.17.180
+	mask: 255.255.255.0
+
+(3) 单片机ping测试
+[root@BeyondBoard_AT91SAM9260BY /root]#ping 192.168.17.180
+
+(4) Windows ssh/putty
+(not support)
+
+(5) Windows telnet/putty  
+> ping 192.168.17.194
+
+[root@BeyondBoard_AT91SAM9260BY /]#cat /etc/passwd
+root:x:0:0:root:/root:/bin/sh
+root::0:0:root:/:/bin/sh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+libuuid:x:100:101::/var/lib/libuuid:
+syslog:x:101:104::/home/syslog:/bin/false
+messagebus:x:102:106::/var/run/dbus:/bin/false
+usbmux:x:103:46:usbmux daemon,,,:/home/usbmux:/bin/false
+dnsmasq:x:104:65534:dnsmasq,,,:/var/lib/misc:/bin/false
+avahi-autoipd:x:105:113:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/bin/false
+kernoops:x:106:65534:Kernel Oops Tracking Daemon,,,:/:/bin/false
+rtkit:x:107:114:RealtimeKit,,,:/proc:/bin/false
+saned:x:108:115::/home/saned:/bin/false
+whoopsie:x:109:116::/nonexistent:/bin/false
+speech-dispatcher:x:110:29:Speech Dispatcher,,,:/var/run/speech-dispatcher:/bin/sh
+avahi:x:111:117:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/bin/false
+lightdm:x:112:118:Light Display Manager:/var/lib/lightdm:/bin/false
+colord:x:113:121:colord colour management daemon,,,:/var/lib/colord:/bin/false
+hplip:x:114:7:HPLIP system user,,,:/var/run/hplip:/bin/false
+pulse:x:115:122:PulseAudio daemon,,,:/var/run/pulse:/bin/false
+beidou:x:1000:1000:beidou,,,:/home/beidou:/bin/sh
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+
+
+
+
+
+[root@BeyondBoard_AT91SAM9260BY /]#cat /etc/shadow
+root:!:16425:0:99999:7:::
+daemon:*:16273:0:99999:7:::
+bin:*:16273:0:99999:7:::
+sys:*:16273:0:99999:7:::
+sync:*:16273:0:99999:7:::
+games:*:16273:0:99999:7:::
+man:*:16273:0:99999:7:::
+lp:*:16273:0:99999:7:::
+mail:*:16273:0:99999:7:::
+news:*:16273:0:99999:7:::
+uucp:*:16273:0:99999:7:::
+proxy:*:16273:0:99999:7:::
+www-data:*:16273:0:99999:7:::
+backup:*:16273:0:99999:7:::
+list:*:16273:0:99999:7:::
+irc:*:16273:0:99999:7:::
+gnats:*:16273:0:99999:7:::
+nobody:*:16273:0:99999:7:::
+libuuid:!:16273:0:99999:7:::
+syslog:*:16273:0:99999:7:::
+messagebus:*:16273:0:99999:7:::
+usbmux:*:16273:0:99999:7:::
+dnsmasq:*:16273:0:99999:7:::
+avahi-autoipd:*:16273:0:99999:7:::
+kernoops:*:16273:0:99999:7:::
+rtkit:*:16273:0:99999:7:::
+saned:*:16273:0:99999:7:::
+whoopsie:*:16273:0:99999:7:::
+speech-dispatcher:!:16273:0:99999:7:::
+avahi:*:16273:0:99999:7:::
+lightdm:*:16273:0:99999:7:::
+colord:*:16273:0:99999:7:::
+hplip:*:16273:0:99999:7:::
+pulse:*:16273:0:99999:7:::
+beidou:$6$Ev10IRUx$z7xapjr/nbBhTkJcuUJBAf4IrWExdBZUkPdXqC4gCXRDkFheGGW7JLRAB6APRolec8SqCe..oe.yfCD3CPAG91:16425:0:99999:7:::
+vboxadd:!:16425::::::
+[root@BeyondBoard_AT91SAM9260BY /]#
+
+
+https://www.cnblogs.com/fuyuanming/p/6519758.html
+
+这里也是由[:]来进行分割，但是这里一共分出来九个栏目，每个栏目的解释如下：
+
+　　1、账户名称（密码需要与账户对应的嘛）
+　　2、加密后的密码（总不能学CSDN放明文密码，是吧），如果这一栏的第一个字符为!或者*的话，说明这是一个不能登录的账户，从上面可以看出，ubuntu默认的就不启用root账户。
+　　3、最近改动密码的日期（不是日期吗，咋是一堆数字，别急，这个是从1970年1月1日算起的总的天数）。那怎么才能知道今天距1970年1月1日有多少天呢？很简单，你改下密码，然后看下这个栏目中的数字是多少就可以了！
+　　4、密码不可被变更的天数：设置了这个值，则表示从变更密码的日期算起，多少天内无法再次修改密码，如果是0的话，则没有限制
+　　5、密码需要重新变更的天数：密码经常更换才能保证安全，为了提醒某些经常不更换密码的用户，可以设置一个天数，强制让用户更换密码，也就是说该用户的密码会在多少天后过期，如果为99999则没有限制
+　　6、密码过期预警天数：如果在5中设置了密码需要重新变更的天数，则会在密码过期的前多少天进行提醒，提示用户其密码将在多少天后过期
+　　7、密码过期的宽恕时间：如果在5中设置的日期过后，用户仍然没有修改密码，则该用户还可以继续使用的天数
+　　8、账号失效日期，过了这个日期账号就不能用了
+　　9、保留的
+
+以上面最后用户letuknowit为例（15400对应的日期为2012年3月1日），其保护如下信息：
+
+　　3、用户letuknowit最近一次修改密码的日期是2012年3月1日，
+　　4、在2012年3月6日之前不能再改动密码了，
+　　5、在2012-3-1到2012-4-29期间letuknowit需要更改密码，
+　　6、在2012-4-29之前的7天，letuknowit登陆系统的时候，系统会提示letuknowit其密码即将过期，
+　　7、如果letuknowit一直到2012-4-29都没有修改密码，则其仍然可以继续使用该账户2天，2天后该账户将不可用
+　　8、无论如何，到了2012年5月29日，该账号都将失效
+
+
+[root@BeyondBoard_AT91SAM9260BY /]#passwd
+Changing password for root
+New password:
+Bad password: too short
+Retype password:
+Password for root changed by root
+
+密码修改为root
+
+
+C:\Users\a>telnet 192.168.17.194
+输入用户名root，密码root登录
+（或者用putty）
+
+(6) Ubuntu telnet
+（设置vmware桥接模式，设置ubuntu的IP固定且网段相同）
+$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:6c:9f:1d  
+          inet addr:192.168.17.181  Bcast:192.168.17.255  Mask:255.255.255.0
+
+$ ping 192.168.17.194
+PING 192.168.17.194 (192.168.17.194) 56(84) bytes of data.
+64 bytes from 192.168.17.194: icmp_req=1 ttl=64 time=5.02 ms
+64 bytes from 192.168.17.194: icmp_req=2 ttl=64 time=2.26 ms
+64 bytes from 192.168.17.194: icmp_req=3 ttl=64 time=2.31 ms
+
+$ telnet 192.168.17.194
+Trying 192.168.17.194...
+Connected to 192.168.17.194.
+Escape character is '^]'.
+
+BeyondBoard_AT91SAM9260BY login: 
+输入用户名root，密码root登录
+
+(7) Ubuntu TFTP server
+$ sudo apt-get install tftpd-hpa tftp-hpa
+$ sudo gedit /etc/default/tftpd-hpa
+TFTP_DIRECTORY="/tftpboot"
+$ sudo mkdir /tftpboot
+$ sudo chmod -R 777 /tftpboot
+$ sudo chown -R nobody /tftpboot
+$ sudo service tftpd-hpa restart
+$ echo "Hello,can you see me?" > /tftpboot/tftpTestFile
+
+(8) BeyondBoard TFTP client
+（设置vmware桥接模式，设置ubuntu的IP固定且网段相同）
+（用telnet登录进去，见上）
+$ telnet 192.168.17.194
+#tftp -g -r tftpTestFile 192.168.17.181
+（交叉编译）
+$ cd /tftpboot
+$ gedit helloworld.c
+//arm-fsl-linux-gnueabi-gcc -o helloworld helloworld.c
+
+#include <stdio.h>
+
+int main()
+{
+	printf("hello, world!\n");
+	return 0;
+}
+$ arm-none-linux-gnueabi-gcc -o helloworld helloworld.c
+$ ls
+helloworld  helloworld.c  helloworld.c~  tftpTestFile
+（get文件，然后chmod +x，然后执行）
+[root@BeyondBoard_AT91SAM9260BY /root]#tftp -g -r helloworld 192.168.17.181
+helloworld           100% |*******************************|  7801   0:00:00 ETA
+[root@BeyondBoard_AT91SAM9260BY /root]#chmod +x helloworld 
+[root@BeyondBoard_AT91SAM9260BY /root]#./helloworld 
+hello, world!
