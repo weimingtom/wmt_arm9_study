@@ -1,3 +1,9 @@
+$ scp staging_dir/target-mipsel_24kc_musl/root-ramips/bin/helloworld root@192.168.3.1:/root/
+用户名：root
+密码：onioneer
+
+----------------------------
+
 今天把omega2+的helloworld跑通了（交叉编译原生c程序），步骤如下：
 (1) 必须要让windows和vmware能直接访问到omega2+，这个过程比较曲折，需要看onion的文档，在我这里是用ssh（windows用putty）通过wifi（路由器密码为12345678）连接到omega2+（相当于路由器，注意不是通过串口），并且能确保ping到192.168.3.1
 (2) 编译openwrt，你没听错，是整个操作系统编译出来，因为官方不提供gcc工具链，交叉编译工具链是通过编译openwrt操作系统顺便编译出来的。为了省事，我这里连feeds都懒得下载，直接执行make menuconfig（更新.config）和make进行编译（之前要apt-get一下，参考onion的文档）。关于openwrt的代码，注意要用openwrt-18.06这个分支，因为只有这个分支是有.config这个文件的（官方已经配好了）
