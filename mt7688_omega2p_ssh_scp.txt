@@ -1,0 +1,57 @@
+今天把omega2+的helloworld跑通了（交叉编译原生c程序），步骤如下：
+(1) 必须要让windows和vmware能直接访问到omega2+，这个过程比较曲折，需要看onion的文档，在我这里是用ssh（windows用putty）通过wifi（路由器密码为12345678）连接到omega2+（相当于路由器，注意不是通过串口），并且能确保ping到192.168.3.1
+(2) 编译openwrt，你没听错，是整个操作系统编译出来，因为官方不提供gcc工具链，交叉编译工具链是通过编译openwrt操作系统顺便编译出来的。为了省事，我这里连feeds都懒得下载，直接执行make menuconfig（更新.config）和make进行编译（之前要apt-get一下，参考onion的文档）。关于openwrt的代码，注意要用openwrt-18.06这个分支，因为只有这个分支是有.config这个文件的（官方已经配好了）
+https://github.com/OnionIoT/source
+(3) 加入helloworld包的源代码。我是从联发科的网站下载的：
+https://docs.labs.mediatek.com/resource/linkit-smart-7688/zh_cn/tutorials/c-c++-programming/using-openwrt-sdk-to-build-c-c++-programs
+然后把helloworld目录解压到package/utils/helloworld，然后在make menuconfig里面把utilities->helloworld用空格勾上（显示成M）然后执行make或者make package/helloworld/compile去编译，如果顺利的话可以在staging_dir/target-mipsel_24kc_musl/root-ramips/bin下面找到helloworld这个文件，不过旧版本的openwrt好像是输出到sbin目录下，或者用find命令搜索。注意有可能会编译不出来，例如没有在menuconfig中勾选，但不知道为何官方文档没有提及这个问题
+(4) 剩下的工作就很简单了，只要把生成的elf文件helloworld通过winscp（ubuntu下用scp命令）发送到远程的192.168.3.1机器上（放在/root目录下），然后用ssh登录上去执行即可（winscp的话需要额外用chmod +x helloworld修改为可执行权限），然后就能执行这个helloworld了，如果在vmware+ubuntu下做的话非常类似android的adb push，不过由于交叉编译只能在ubuntu下做（windows不支持编译openwrt），所以最好还是在ubuntu下完成scp的过程，或者写一个sh脚本做自动上传。
+接下来的任务是怎么写一个helloworld去控制针脚电平状态，模仿树莓派的wiringpi
+
+
+(1) wifi, 连接无线路由器Omega-29CC，密码为12345678，windows网卡设置自动获取IP
+(2) ping 192.168.3.1
+(3) putty: 192.168.3.1, login as: root, password: onioneer
+(4) ssh: ssh root@192.168.3.1, password: onioneer  
+root@192.168.3.1's password: 
+
+BusyBox v1.25.1 () built-in shell (ash)
+
+   ____       _             ____
+  / __ \___  (_)__  ___    / __ \__ _  ___ ___ ____ _
+ / /_/ / _ \/ / _ \/ _ \  / /_/ /  ' \/ -_) _ `/ _ `/
+ \____/_//_/_/\___/_//_/  \____/_/_/_/\__/\_, /\_,_/
+ W H A T  W I L L  Y O U  I N V E N T ? /___/
+ -----------------------------------------------------
+   Ω-ware: 0.2.2 b201
+ -----------------------------------------------------
+(x) (5) NFS - 不成功
+$ sudo apt-get install nfs-kernel-server 
+$ sudo apt-get install nfs-common
+$ sudo gedit /etc/exports 
+/nfsroot           *(rw,sync,no_root_squash) 
+$ sudo mkdir /nfsroot 
+$ sudo chmod -R 777 /nfsroot 
+$ sudo chown -R nobody /nfsroot
+$ sudo /etc/init.d/nfs-kernel-server start
+$ sudo /etc/init.d/nfs-kernel-server restart
+$ rpcinfo -p
+(x) (6) vmware切换到桥接模式 - 不成功
+$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:2b:fb:bf  
+          inet addr:192.168.3.172  Bcast:192.168.3.255  Mask:255.255.255.0
+mount -t nfs 192.168.1.151:/nfsroot /mnt -o nolock
+
+(x) (7) mount NFS - 不成功 （参考：http://blog.chinaunix.net/uid-31343710-id-5735535.html）
+# modprobe nfs
+failed to find a module named nfs
+# lsmod | grep nfs
+# mount -t nfs 192.168.3.172:/nfsroot /mnt -o nolock
+mount: mounting 192.168.3.172:/nfsroot on /mnt failed: No such device
+# opkg update
+# opkg install nfs-utils
+(http://repo.onion.io/omega2/packages/packages/)
+(mount.nfs failed)
+see http://community.onion.io/topic/895/nfs-mount/13
+see https://github.com/Ictinike/Omega2-firmware
+
