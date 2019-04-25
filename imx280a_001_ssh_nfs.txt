@@ -1,0 +1,89 @@
+EasyARM i.mx280a
+
+(0) putty com:
+波特率（每秒位数）：115200
+数据位：8
+奇偶校验：无
+停止位：1
+流控制：无
+
+用户名密码都是root
+
+----------------------------
+
+
+关于imx280a开发板，上次研究了怎么用3线usb转串口转换器登录ssh，这次研究怎么用网线登录ssh和传输文件。这里有个误区，一般会以为这个arm9板一定要用串口才能登录，其实是错的，准确来说跟用网线登录树莓派3和树莓派zero是一样的道理，imx280a的本地ip是固定的，所以只要把本地的ip也设置成固定值，并且不要和上网用的另一个网卡的网段冲突，就可以ping到imx280a的ip——当然在我这里是冲突了，所以需要把另一个网卡禁用掉。只要能ping到imx280a的ip（通过串口ssh获知），那么就一定能ssh登录这个固定ip了（本地的ip也在设置对话框中设为固定值，网关写死是imx280a的ip）。至于文件传输，有两个问题，首先可以通过winscp从imx280a的文件系统中读取出文件；其次，由于imx280a的文件系统只读，所以无法在运行期写入文件，但允许在/dev/shm中创建文件，当然这不是很好的主意，我下次想想有没有办法解决这个写入问题，或者尝试其他方法例如nfs
+
+
+只有/dev/shm可写入
+或者挂载tf卡
+
+-----------------------------------------
+
+(1) 禁用原有无线网卡（IP冲突）
+(2) usb网卡本地IP写死是
+	IP: 192.168.1.150
+	mask: 255.255.255.0
+	gate: <blank>
+(3) ping 192.168.1.136
+
+(4) putty (ssh)  
+	ip: 192.168.1.136
+	user: root
+	pass: root
+
+(5) NFS
+	$ sudo apt-get install nfs-kernel-server 
+	$ sudo apt-get install nfs-common
+	$ sudo gedit /etc/exports 
+	/nfsroot           *(rw,sync,no_root_squash) 
+	$ sudo mkdir /nfsroot 
+	$ sudo chmod -R 777 /nfsroot 
+	$ sudo chown -R nobody /nfsroot
+	$ sudo /etc/init.d/nfs-kernel-server start
+	$ sudo /etc/init.d/nfs-kernel-server restart
+	$ rpcinfo -p
+	
+(x) (5.1) NFS NAT, not good
+	(x) >> 设置vmware NAT模式下的端口映射，添加4个映射，端口相同，IP填192.168.1.150
+	(x) tcp: 111
+	(x) tcp: 2049
+	(x) udp: 111
+	(x) udp: 4046
+	(x) [root@M28x ~]# ping 192.168.1.150
+	(x) >> 如果用vmware NAT模式的话，端口映射无法做，出现某些端口打不通
+	(x) [root@M28x ~]# mount -t nfs 192.168.1.150:/nfsroot /mnt -o nolock
+	(x) pmap_getmaps.c: rpc problem: RPC: Unable to receive; errno = Connection reset by peer
+	(x) mount: RPC: Unable to receive; errno = Connection refused
+	(x) mount: mounting 192.168.1.150:/nfsroot on /mnt failed: Bad file descriptor
+	
+(5.2) NFS, bridge, success
+	>> vmware虚拟网络编辑器：设置桥接模式，ubuntu设置固定IP: 192.168.1.151, 自动设置（这个可能不需要修改勾选）
+	$ ifconfig
+		eth0      Link encap:Ethernet  HWaddr 00:0c:29:6c:9f:1d  
+          inet addr:192.168.1.151  Bcast:192.168.1.255  Mask:255.255.255.0
+	>> 改用vmare的桥接模式（没有勾选复制状态）
+	[root@M28x ~]# ping 192.168.1.151
+	[root@M28x ~]# mount -t nfs 192.168.1.151:/nfsroot /mnt -o nolock
+	[root@M28x ~]# umount /mnt
+	
+(5.3) cross compile
+	$ cd /nfsroot
+	$ gedit /nfsroot/helloworld.c
+	//arm-fsl-linux-gnueabi-gcc -o helloworld helloworld.c
+
+	#include <stdio.h>
+
+	int main()
+	{
+		printf("hello, world!\n");
+		return 0;
+	}
+	$ arm-fsl-linux-gnueabi-gcc -o helloworld helloworld.c
+	[root@M28x ~]# /mnt/helloworld
+	hello, world!
+
+	
+	
+	
+	
