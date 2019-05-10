@@ -13,6 +13,7 @@ https://shop365481095.taobao.com/
 http://dl.sipeed.com/LICHEE/Nano/   
 http://linux-sunxi.org/Allwinner_SoC_Family  
 search arm9, suniv  
+http://nano.lichee.pro  
 
 ## 新唐  
 nuvoton NUC977DK62Y 970 ARM9 Linux开发板  
