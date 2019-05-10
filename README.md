@@ -40,3 +40,9 @@ http://www.myir-tech.com/resource/448.asp
 * 制作和刷文件系统  
 * 移植framebuffer，移植SDL  
 
+## 荔枝派nano, F1C100s, Sipeed, 深圳矽速科技        
+https://shop365481095.taobao.com/
+http://dl.sipeed.com/LICHEE/Nano/   
+http://linux-sunxi.org/Allwinner_SoC_Family  
+search arm9, suniv  
+
