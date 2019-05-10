@@ -9,7 +9,7 @@ http://www.zlg.cn/ipc/ipc/product/id/91.html
 atmel ARM9 AT91SAM9260 linux网络开发板秒杀stm32f 51单片机  
 
 ## 荔枝派nano, F1C100s, Sipeed, 深圳矽速科技        
-https://shop365481095.taobao.com/
+https://shop365481095.taobao.com/  
 http://dl.sipeed.com/LICHEE/Nano/   
 http://linux-sunxi.org/Allwinner_SoC_Family  
 search arm9, suniv  
