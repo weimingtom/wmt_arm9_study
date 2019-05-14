@@ -66,4 +66,7 @@ see https://github.com/Ictinike/Omega2-firmware
 使用rsync
 https://docs.onion.io/omega2-docs/transferring-files.html
 
+使用串口
+https://docs.onion.io/omega2-docs/connecting-to-the-omega-terminal.html
+
 
