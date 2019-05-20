@@ -15,6 +15,9 @@ http://linux-sunxi.org/Allwinner_SoC_Family
 search arm9, suniv  
 http://nano.lichee.pro  
 
+## Lichee Pi 荔枝派 全流程指南  
+https://www.kancloud.cn/lichee/lichee  
+
 ## 新唐  
 nuvoton NUC977DK62Y 970 ARM9 Linux开发板  
 
