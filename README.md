@@ -50,3 +50,9 @@ http://www.myir-tech.com/resource/448.asp
 * 制作和刷文件系统  
 * 移植framebuffer，移植SDL  
 
+## **nuc970 (Important!!!)**  
+https://github.com/OpenNuvoton/NUC970_Linux_Applications  
+http://www.nuvoton.com.cn/hq/products/microprocessors/arm9-mpus/nuc970-industrial-control-series/?__locale=en  
+http://www.nuvoton.com.cn/hq/products/iot-solution/iot-platform/numaker-maker-platform/numaker-tomato/?__locale=en  
+
+
