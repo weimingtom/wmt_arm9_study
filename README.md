@@ -55,4 +55,10 @@ https://github.com/OpenNuvoton/NUC970_Linux_Applications
 http://www.nuvoton.com.cn/hq/products/microprocessors/arm9-mpus/nuc970-industrial-control-series/?__locale=en  
 http://www.nuvoton.com.cn/hq/products/iot-solution/iot-platform/numaker-maker-platform/numaker-tomato/?__locale=en  
 
+## search f1c100s  
+
+## kozos  
+http://kozos.jp/kozos/  
+https://github.com/jg1uaa/kozos-lpinano  
+
 
