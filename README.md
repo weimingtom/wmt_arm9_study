@@ -64,3 +64,6 @@ https://github.com/jg1uaa/kozos-lpinano
 ## Linux4SAM  
 http://www.at91.com/linux4sam/bin/view/Linux4SAM/BuildRoot  
 
+## nuc
+https://github.com/KianWeng/NUC972  
+https://github.com/KianWeng/NUC972_Buildroot  
